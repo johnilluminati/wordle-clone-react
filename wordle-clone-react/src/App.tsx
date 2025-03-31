@@ -26,17 +26,6 @@ function App() {
             })}
           </div>
         </div>
-        {/* <div className="flex flex-col justify-between h-[400px]">
-          {guesses.map((guess, index) => {
-            return (
-                <div key={index} className="flex flex-row w-[330px] justify-between">
-                  {guess.map((letter, letterIndex) => (
-                    <div key={letterIndex} className="border-2 border-gray-600 h-[62px] w-[62px] align-bottom">{letter}</div>
-                  ))}
-                </div>
-            )
-          })}
-        </div> */}
         <div className="flex">
           {solution}
         </div>
