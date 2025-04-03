@@ -9,7 +9,7 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [solution, setSolution] = useState("");
   const [guesses, setGuesses] = useState<Array<Guess>>(BoardDefault);
-  const [keyboard, setKeyboard] = useState(KeyboardLayout)
+  const [keyboard, setKeyboard] = useState(KeyboardLayout);
   const [currentGuessRow, setCurrentGuessRow] = useState(0);
   const [currentGuessIndex, setCurrentGuessIndex] = useState(0);
 
