@@ -86,13 +86,25 @@ function App() {
         }
       }
 
+      // create a const of the remaining letters of the solution that were not correct in the guess
+      const solutionRemainingLetters: string = solution
+        .split("")
+        .reduce((remaining, letter, index) =>
+          updatedGuesses[currentGuessRow].letters[index].status !== GuessLetterStatus.Correct
+            ? remaining + letter
+            : remaining,
+          ""
+        );
+
       // second pass ignoring Correct/Absent letters & checking for Misplaced letters
       for (let i = 0; i < 5; i++) {
         const guessLetter = updatedGuesses[currentGuessRow].letters[i];
 
         if (guessLetter.status === GuessLetterStatus.Unknown) {
-          if (solution.includes(guessLetter.letter)) {
+          if (solutionRemainingLetters.includes(guessLetter.letter)) {
             updatedGuesses[currentGuessRow].letters[i].status = GuessLetterStatus.Misplaced;
+          } else {
+            updatedGuesses[currentGuessRow].letters[i].status = GuessLetterStatus.Absent;
           }
         }
       }

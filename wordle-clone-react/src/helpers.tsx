@@ -7,7 +7,7 @@ export interface GuessLetter {
 
 export interface Guess {
   letters: Array<GuessLetter>;
-  isCorrect: boolean;
+  //isCorrect: boolean;
 }
 
 export const BoardDefault = Array<Guess>(6).fill({
@@ -15,7 +15,7 @@ export const BoardDefault = Array<Guess>(6).fill({
     letter: "",
     status: GuessLetterStatus.Unknown,
   }),
-  isCorrect: false,
+  //isCorrect: false,
 });
 
 export interface KeyboardKey {

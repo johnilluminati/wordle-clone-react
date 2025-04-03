@@ -21,6 +21,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ keys, handleKeyAction }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const key = event.key.toUpperCase();
+      console.log(key);
       if (key === "ENTER" || key === "BACKSPACE" || /^[A-Z]$/.test(key)) {
         handleKeyAction(key);
       }      
