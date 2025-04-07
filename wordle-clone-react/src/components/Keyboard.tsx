@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { KeyboardKeyStatus, KeyboardLayout } from "../constants"
 
 interface KeyboardProps {
@@ -18,6 +18,8 @@ function getColorStyle(status: KeyboardKeyStatus): string {
 }
 
 const Keyboard: React.FC<KeyboardProps> = ({ keys, handleKeyAction }) => {
+  const colorStyle = useMemo(() => getColorStyle, []);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const key = event.key.toUpperCase();
@@ -45,7 +47,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ keys, handleKeyAction }) => {
                     type="button"
                     key={keyIndex}
                     // the font needs to be smaller if the button is 'ENTER' or 'BACK', hence why we are checking for the length
-                    className={`flex ${getColorStyle(key.status)} rounded-sm p-3 justify-center items-center font-bold text-[${key.key.length > 1 ? "12px" : "1.25rem"}] uppercase cursor-pointer`}
+                    className={`flex ${colorStyle(key.status)} rounded-sm p-3 justify-center items-center font-bold text-[${key.key.length > 1 ? "12px" : "1.25rem"}] uppercase cursor-pointer`}
                     onClick={() => handleKeyAction(key.key)}
                   >
                     {key.key}

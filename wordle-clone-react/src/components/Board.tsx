@@ -1,5 +1,6 @@
 import { GuessLetterStatus } from "../constants"
 import { Guess } from "../helpers"
+import { useMemo } from "react"
 
 function getColorStyle(status: GuessLetterStatus): string {
   switch (status) {
@@ -15,6 +16,8 @@ function getColorStyle(status: GuessLetterStatus): string {
 }
 
 const Board = ({ guesses }: { guesses: Guess[] }) => {
+  const colorStyle = useMemo(() => getColorStyle, []);
+
   return (
     <div className="flex justify-center items-center h-[420px] w-[350px]">
       <div className="grid grid-rows-6 gap-[5px]">
@@ -23,7 +26,7 @@ const Board = ({ guesses }: { guesses: Guess[] }) => {
             <div key={index} className="grid grid-cols-5 gap-[5px]">
               {guess.letters.map((letter, letterIndex) => {                
                 return (
-                  <div key={letterIndex} className={`inline-flex ${getColorStyle(letter.status)} h-[62px] w-[62px] justify-center items-center font-bold text-[2rem] uppercase`}>
+                  <div key={letterIndex} className={`inline-flex ${colorStyle(letter.status)} h-[62px] w-[62px] justify-center items-center font-bold text-[2rem] uppercase`}>
                     {letter.letter}
                   </div>
                 )
